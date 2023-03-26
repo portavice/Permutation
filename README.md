@@ -42,7 +42,17 @@ $permutations = Permutation::getPermutations([
     'b' => ['b1', 'b2'],
     'c' => ['c1', 'c2'], 
 ]);
-// The output is the same as above.
+// Output:
+// [
+//     ['a' => 'a1', 'b' => 'b1', 'c' => 'c1'],
+//     ['a' => 'a1', 'b' => 'b1', 'c' => 'c2'],
+//     ['a' => 'a1', 'b' => 'b2', 'c' => 'c1'],
+//     ['a' => 'a1', 'b' => 'b2', 'c' => 'c2'],
+//     ['a' => 'a2', 'b' => 'b1', 'c' => 'c1'],
+//     ['a' => 'a2', 'b' => 'b1', 'c' => 'c2'],
+//     ['a' => 'a2', 'b' => 'b2', 'c' => 'c1'],
+//     ['a' => 'a2', 'b' => 'b2', 'c' => 'c2'],
+// ]
 
 // You can also use the recursive method:
 $permutations = Permutation::getPermutationsRecursive([
