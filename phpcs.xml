@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<ruleset name="project coding standard">
+    <!-- display progress -->
+    <arg value="psv"/>
+
+    <!-- use colors in output -->
+    <arg name="colors"/>
+
+    <!-- Paths to check -->
+    <file>Permutation.php</file>
+
+    <!-- Check for PSR12 compliance -->
+    <rule ref="PSR12"/>
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+    <rule ref="Squiz.Arrays.ArrayDeclaration.NoComma"/>
+
+    <!-- Check vor PHP compatibility -->
+    <rule ref="PHPCompatibility"/>
+    <config name="testVersion" value="8.0-"/>
+</ruleset>
+
