@@ -14,7 +14,10 @@ To install it, just add the following to your `composer.json` file:
   }
 }
 ```
-or run ```bash composer require portavice/permutation```.
+or run 
+```bash
+composer require portavice/permutation
+```
 
 Then run `composer install` or `composer update`.
 
