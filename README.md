@@ -1,4 +1,7 @@
 # Permutation
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/portavice/permutation.svg?style=flat-square)](https://packagist.org/packages/portavice/permutation)
+<a href="https://packagist.org/packages/portavice/permutation"><img src="https://img.shields.io/packagist/php-v/portavice/permutation.svg?style=flat-square" alt="PHP from Packagist"></a>
+[![Total Downloads](https://img.shields.io/packagist/dt/portavice/permutation.svg?style=flat-square)](https://packagist.org/packages/portavice/permutation)
 
 This is a simple permutation library for PHP.
 
