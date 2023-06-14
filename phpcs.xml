@@ -7,12 +7,12 @@
     <arg name="colors"/>
 
     <!-- Paths to check -->
-    <file>Permutation.php</file>
+    <file>src</file>
+    <file>tests</file>
 
     <!-- Check for PSR12 compliance -->
     <rule ref="PSR12"/>
     <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
-    <rule ref="Squiz.Arrays.ArrayDeclaration.NoComma"/>
 
     <!-- Check vor PHP compatibility -->
     <rule ref="PHPCompatibility"/>
