@@ -12,6 +12,7 @@ It can be used to generate all possible permutations of a given array.
 It can also be used to generate all possible permutations of a given array recursively. 
 ## Installation
 To install this package with [Composer](https://getcomposer.org/):
+
 To install it, just add the following to your `composer.json` file:
 
 ```bash
