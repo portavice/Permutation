@@ -4,14 +4,20 @@ namespace Portavice\Permutation;
 
 class Permutation
 {
+    private array $input;
     private array $result;
     private int $offset;
     private int $limit;
     private mixed $callback = null;
     private bool $unsetAfterCall = false;
     private ?array $callbackArgs;
-    public function __construct(private array $input, int $offset = 0, int $limit = 0)
+    public function __construct(array $input, int $offset = 0, int $limit = 0)
     {
+        $this->input = array_map(
+            fn ($valueList) => (is_array($valueList) ? array_values($valueList) : $valueList),
+            $input
+        );
+
         $this->result = [];
         $this->offset = $offset;
         $this->limit = $limit;

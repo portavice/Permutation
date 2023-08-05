@@ -71,6 +71,34 @@ class Test extends TestCase
         ], $this->callBackOutput);
     }
 
+    public function testManualIndices(): void
+    {
+        $result = Permutation::getPermutations([
+            'first' => [
+                0 => 'a',
+                2 => 'b',
+                3 => 'c',
+            ],
+            'second' => [
+                'x',
+                1 => 'y',
+                'test' => 'z',
+            ],
+        ]);
+
+        static::assertEquals([
+            ['first' => 'a', 'second' => 'x'],
+            ['first' => 'b', 'second' => 'x'],
+            ['first' => 'c', 'second' => 'x'],
+            ['first' => 'a', 'second' => 'y'],
+            ['first' => 'b', 'second' => 'y'],
+            ['first' => 'c', 'second' => 'y'],
+            ['first' => 'a', 'second' => 'z'],
+            ['first' => 'b', 'second' => 'z'],
+            ['first' => 'c', 'second' => 'z'],
+        ], $result);
+    }
+
     final public function permutationOutPutReturn(array $permutation): void
     {
         $this->callBackOutput[] = $permutation;
