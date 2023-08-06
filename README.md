@@ -100,6 +100,18 @@ $permutations = Permutation::getPermutationsRecursive(
 //     ['a' => 'a2', 'b' => 'b2', 'c' => 'c1'],
 //     ['a' => 'a2', 'b' => 'b2', 'c' => 'c2'],
 // ]
+
+// NEW: Generators! For memory constrained environments.
+// More info how to use generators here: https://www.php.net/manual/en/language.generators.overview.php
+$permutations = Permutation::getGenerator([
+    'a' => ['a1', 'a2'],
+    'b' => ['b1', 'b2'],
+    'c' => ['c1', 'c2'],
+]);
+
+foreach ($permutations as $permutation) {
+    // ... do stuff here!
+}
 ```
 
 ## License
