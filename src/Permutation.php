@@ -2,11 +2,14 @@
 
 namespace Portavice\Permutation;
 
+use Generator;
+
 class Permutation
 {
     private array $result;
     private int $offset;
     private int $limit;
+
     private mixed $callback = null;
     private bool $unsetAfterCall = false;
     private ?array $callbackArgs;
@@ -122,6 +125,97 @@ class Permutation
         return $this;
     }
 
+    /**
+     * Returns a generator for all permutations.
+     *
+     * @return Generator
+     */
+    final public function generator(): Generator
+    {
+        if (empty($this->input)) {
+            return;
+        }
+
+        $permutationCount = 1;
+        $matrixInfo = [];
+        $cumulativeCount = 1;
+        foreach ($this->input as $aColumn) {
+            if (!is_array($aColumn)) {
+                $aColumn = [$aColumn];
+            }
+            $columnCount = count($aColumn);
+            $permutationCount *= $columnCount;
+            $matrixInfo[] = [
+                'count' => $columnCount,
+                'cumulativeCount' => $cumulativeCount,
+            ];
+            $cumulativeCount *= $columnCount;
+        }
+
+        $arrayKeys = array_keys($this->input);
+        $matrix = array_values($this->input);
+
+        $start = max($this->offset, 0);
+
+        $end = $permutationCount;
+        if ($this->limit > 0) {
+            $end = min(($this->offset + $this->limit), $end);
+        }
+
+        for ($p = $start; $p < $end; $p++) {
+            $permutation = [];
+
+            foreach ($matrix as $c => $values) {
+                $i = (int) ($p / $matrixInfo[$c]['cumulativeCount']) % $matrixInfo[$c]['count'];
+
+                $permutation[$arrayKeys[$c]] = $values[$i];
+            }
+
+            $this->sendCallback($permutation);
+            yield $permutation;
+        }
+    }
+
+    /**
+     * Generates all permutations recursively.
+     *
+     * Note: Order of permutations is different from Permutation::permutateRecursive().
+     *
+     * @return Generator
+     */
+    final public function recursiveGenerator(): Generator
+    {
+        // copy input because we use array_shift to remove entries later
+        $stack = array_replace([], $this->input);
+
+        yield from $this->recurseGenerator($stack);
+    }
+
+    private function recurseGenerator(array $stack, ?array $lastPermutation = null): Generator
+    {
+        if (count($stack) === 0) {
+            return;
+        }
+
+        do {
+            $column = array_key_first($stack);
+            $values = array_shift($stack);
+
+            foreach ($values as $value) {
+                if ($lastPermutation !== null) {
+                    $permutation = [...$lastPermutation, $column => $value];
+                } else {
+                    $permutation = [$column => $value];
+                }
+
+                $this->sendCallback($permutation);
+                yield $permutation;
+
+                yield from $this->recurseGenerator($stack, $permutation);
+            }
+        } while (!empty($stack));
+    }
+
     private function sendCallback(array $permutation): void
     {
         if ($this->callback !== null) {
@@ -179,5 +273,33 @@ class Permutation
         mixed ...$args
     ): array {
         return (new self($input))->setCallback($callback, $unsetAfterCall, ...$args)->permutateRecursive()->getResult();
+    }
+
+    public static function getGenerator(
+        array $input,
+        ?callable $callback = null,
+        mixed ...$args
+    ): Generator {
+        $permutation = (new self($input));
+
+        if ($callback !== null) {
+            $permutation->setCallback($callback, false, ...$args);
+        }
+
+        return $permutation->generator();
+    }
+
+    public static function getRecursiveGenerator(
+        array $input,
+        ?callable $callback = null,
+        mixed ...$args
+    ): Generator {
+        $permutation = (new self($input));
+
+        if ($callback !== null) {
+            $permutation->setCallback($callback, false, ...$args);
+        }
+
+        return $permutation->recursiveGenerator();
     }
 }
