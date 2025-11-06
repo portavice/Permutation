@@ -13,9 +13,9 @@ class Test extends TestCase
     {
         $this->assertEquals([
             ['a', 'b', 'c'],
-            ['a', 'b', 'd']
+            ['a', 'b', 'd'],
         ], Permutation::getPermutations([
-            'a', 'b', ['c', 'd']
+            'a', 'b', ['c', 'd'],
         ]));
     }
 
@@ -26,15 +26,15 @@ class Test extends TestCase
             [1 => 'b'],
             ['a', 'b'],
             [2 => 'c'],
-            ['a', 2 =>  'c'],
+            ['a', 2 => 'c'],
             [1 => 'b', 2 => 'c'],
             ['a', 'b', 'c'],
             [2 => 'd'],
             ['a', 2 => 'd'],
             [1 => 'b', 2 => 'd'],
-            ['a', 'b', 'd']
+            ['a', 'b', 'd'],
         ], Permutation::getPermutationsRecursive([
-            'a', 'b', ['c', 'd']
+            'a', 'b', ['c', 'd'],
         ]));
     }
 
@@ -42,11 +42,11 @@ class Test extends TestCase
     {
         $this->callBackOutput = [];
         Permutation::getPermutationsWithCallback([
-            'a', 'b', ['c', 'd']
+            'a', 'b', ['c', 'd'],
         ], [$this, 'permutationOutPutReturn'], true);
         $this->assertEquals([
             ['a', 'b', 'c'],
-            ['a', 'b', 'd']
+            ['a', 'b', 'd'],
         ], $this->callBackOutput);
     }
 
@@ -54,20 +54,20 @@ class Test extends TestCase
     {
         $this->callBackOutput = [];
         Permutation::getPermutationsRecursiveWithCallback([
-            'a', 'b', ['c', 'd']
+            'a', 'b', ['c', 'd'],
         ], [$this, 'permutationOutPutReturn'], true);
         $this->assertEquals([
             ['a'],
             [1 => 'b'],
             ['a', 'b'],
             [2 => 'c'],
-            ['a', 2 =>  'c'],
+            ['a', 2 => 'c'],
             [1 => 'b', 2 => 'c'],
             ['a', 'b', 'c'],
             [2 => 'd'],
             ['a', 2 => 'd'],
             [1 => 'b', 2 => 'd'],
-            ['a', 'b', 'd']
+            ['a', 'b', 'd'],
         ], $this->callBackOutput);
     }
 

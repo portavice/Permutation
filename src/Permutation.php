@@ -14,6 +14,7 @@ class Permutation
     private mixed $callback = null;
     private bool $unsetAfterCall = false;
     private ?array $callbackArgs;
+
     public function __construct(array $input, int $offset = 0, int $limit = 0)
     {
         $this->input = array_map(
@@ -80,7 +81,7 @@ class Permutation
                 break;
             }
             for ($currentColumnIndex = 0; $currentColumnIndex < $columnCount; $currentColumnIndex++) {
-                $index = (int)($currentPermutation / $matrixInfo[$currentColumnIndex]['cumulativeCount'])
+                $index = (int) ($currentPermutation / $matrixInfo[$currentColumnIndex]['cumulativeCount'])
                     % $matrixInfo[$currentColumnIndex]['count'];
                 $this->result[$currentPermutation][$currentColumnIndex] = $matrix[$currentColumnIndex][$index];
             }
@@ -133,8 +134,6 @@ class Permutation
 
     /**
      * Returns a generator for all permutations.
-     *
-     * @return Generator
      */
     final public function generator(): Generator
     {
@@ -186,8 +185,6 @@ class Permutation
      * Generates all permutations recursively.
      *
      * Note: Order of permutations is different from Permutation::permutateRecursive().
-     *
-     * @return Generator
      */
     final public function recursiveGenerator(): Generator
     {
@@ -248,7 +245,7 @@ class Permutation
     final public function getResult(bool $withSort = false): array
     {
         if ($withSort) {
-            usort($this->result, static fn($a, $b) => count($a) <=> count($b));
+            usort($this->result, static fn ($a, $b) => count($a) <=> count($b));
         }
         return $this->result;
     }
