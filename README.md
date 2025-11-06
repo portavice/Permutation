@@ -1,8 +1,10 @@
 # Permutation
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/portavice/permutation.svg?style=flat-square)](https://packagist.org/packages/portavice/permutation)
-![Test Status](https://img.shields.io/github/actions/workflow/status/portavice/Permutation/tests.yml?branch=main&label=Tests)
-![Code Style Status](https://img.shields.io/github/actions/workflow/status/portavice/Permutation/code-style.yml?branch=main&label=Code%20Style)
+
+[![MIT Licensed](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE.md)
 <a href="https://packagist.org/packages/portavice/permutation"><img src="https://img.shields.io/packagist/php-v/portavice/permutation.svg?style=flat-square" alt="PHP from Packagist"></a>
+[![Tests](https://github.com/portavice/Permutation/actions/workflows/tests.yml/badge.svg)](https://github.com/portavice/bladestrap/actions/workflows/tests.yml)
+[![Code style check](https://github.com/portavice/Permutation/actions/workflows/code-style.yml/badge.svg)](https://github.com/portavice/bladestrap/actions/workflows/code-style.yml)
+[![Latest Version](https://img.shields.io/packagist/v/portavice/permutation.svg?style=flat-square)](https://packagist.org/packages/portavice/permutation)
 [![Total Downloads](https://img.shields.io/packagist/dt/portavice/permutation.svg?style=flat-square)](https://packagist.org/packages/portavice/permutation)
 
 This is a simple permutation library for PHP.
@@ -118,7 +120,7 @@ foreach ($permutations as $permutation) {
 This library is licensed under the MIT license.
 
 ## Author
-This library was written by [Shaun Lüdeke](https://github.com/shaunluedeke) for [Portavice GmbH](https://portavice.de/).
+This library was written by [Shaun Lüdeke](https://github.com/shaunluedeke) for [portavice GmbH](https://portavice.de/).
 
 ## Development
 
@@ -130,4 +132,4 @@ This library was written by [Shaun Lüdeke](https://github.com/shaunluedeke) for
 ### Code Style
 PHP code MUST follow [PSR-12 specification](https://www.php-fig.org/psr/psr-12/).
 
-We use [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) for the PHP code style check.
+We use [Laravel Pint](https://laravel.com/docs/12.x/pint#configuring-pint) for the PHP code style check.

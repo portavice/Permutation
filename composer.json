@@ -2,7 +2,6 @@
   "name": "portavice/permutation",
   "description": "Generating permutations of arrays normal and recursive",
   "type": "library",
-  "minimum-stability": "dev",
   "license": "MIT",
   "homepage": "https://portavice.de",
   "keywords": [
@@ -22,13 +21,11 @@
     "issues": "https://github.com/portavice/Permutation/issues"
   },
   "require": {
-    "php": "^8.0"
+    "php": "^8.2"
   },
   "require-dev": {
-    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
-    "phpcompatibility/php-compatibility": "^9.3.5",
-    "phpunit/phpunit": "^10.2.2",
-    "squizlabs/php_codesniffer": "^3.7.2"
+    "phpunit/phpunit": "^11.5",
+    "portavice/laravel-pint-config": "^3.0"
   },
   "autoload": {
     "psr-4": {
@@ -38,19 +35,20 @@
       "Portavice\\Permutation\\": "src"
     }
   },
-  "scripts": {
-    "test": "phpunit",
-    "cs": ["phpcs"],
-    "csfix": ["phpcbf"]
-  },
   "autoload-dev": {
     "psr-4": {
       "Portavice\\Permutation\\Tests\\": "tests"
     }
   },
-  "config": {
-    "allow-plugins": {
-      "dealerdirect/phpcodesniffer-composer-installer": true
-    }
+  "scripts": {
+    "cs": [
+      "pint --config vendor/portavice/laravel-pint-config/pint.json --test"
+    ],
+    "csfix": [
+      "pint --config vendor/portavice/laravel-pint-config/pint.json"
+    ],
+    "test": [
+      "phpunit"
+    ]
   }
 }
