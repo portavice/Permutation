@@ -1,54 +1,54 @@
 {
-  "name": "portavice/permutation",
-  "description": "Generating permutations of arrays normal and recursive",
-  "type": "library",
-  "license": "MIT",
-  "homepage": "https://portavice.de",
-  "keywords": [
-    "permutation",
-    "array",
-    "recursive"
-  ],
-  "authors": [
-    {
-      "name": "Shaun Lüdeke",
-      "email": "shaun.luedeke@portavice.de",
-      "homepage": "https://portavice.de",
-      "role": "Developer"
-    }
-  ],
-  "support": {
-    "issues": "https://github.com/portavice/Permutation/issues"
-  },
-  "require": {
-    "php": "^8.2"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^11.5",
-    "portavice/laravel-pint-config": "^3.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "Portavice\\Permutation\\": "src"
+    "name": "portavice/permutation",
+    "description": "Generating permutations of arrays normal and recursive",
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://portavice.de",
+    "keywords": [
+        "permutation",
+        "array",
+        "recursive"
+    ],
+    "authors": [
+        {
+            "name": "Shaun Lüdeke",
+            "email": "shaun.luedeke@portavice.de",
+            "homepage": "https://portavice.de",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/portavice/Permutation/issues"
     },
-    "psr-0": {
-      "Portavice\\Permutation\\": "src"
+    "require": {
+        "php": "^8.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12.5|^13.4",
+        "portavice/laravel-pint-config": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Portavice\\Permutation\\": "src"
+        },
+        "psr-0": {
+            "Portavice\\Permutation\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Portavice\\Permutation\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "cs": [
+            "pint --config vendor/portavice/laravel-pint-config/pint.json --test"
+        ],
+        "csfix": [
+            "pint --config vendor/portavice/laravel-pint-config/pint.json"
+        ],
+        "test": [
+            "phpunit"
+        ]
     }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Portavice\\Permutation\\Tests\\": "tests"
-    }
-  },
-  "scripts": {
-    "cs": [
-      "pint --config vendor/portavice/laravel-pint-config/pint.json --test"
-    ],
-    "csfix": [
-      "pint --config vendor/portavice/laravel-pint-config/pint.json"
-    ],
-    "test": [
-      "phpunit"
-    ]
-  }
 }
