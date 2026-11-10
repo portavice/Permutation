@@ -10,13 +10,17 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu-latest ]
-        php: [ 8.5, 8.4, 8.3, 8.2 ]
+        php:
+          - 8.3
+          - 8.4
+          - 8.5
+          - 8.6
 
     name: Tests ${{ matrix.os }} - PHP ${{ matrix.php }}
 
     steps:
       -   name: Checkout code
-          uses: actions/checkout@v5
+          uses: actions/checkout@v7
 
       -   name: Setup PHP
           uses: shivammathur/setup-php@v2

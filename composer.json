@@ -21,10 +21,10 @@
     "issues": "https://github.com/portavice/Permutation/issues"
   },
   "require": {
-    "php": "^8.2"
+    "php": "^8.3"
   },
   "require-dev": {
-    "phpunit/phpunit": "^11.5",
+    "phpunit/phpunit": "^12.5|^13.4",
     "portavice/laravel-pint-config": "^3.0"
   },
   "autoload": {
